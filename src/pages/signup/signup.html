@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Signup</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding="true" scroll="false"  >
+  <form [formGroup]="myForm" (ngSubmit)="signup()">
+    <ion-list>
+      <ion-item text-center>
+        <ion-img width="150" height="170"  src="assets/logo1.png" ></ion-img>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-label stacked>Email:</ion-label>
+        <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key" item-left></ion-icon>
+        <ion-label stacked>Password:</ion-label>
+        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark">Register</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+
+  <video controls preload="auto" webkit-playsinline autoplay loop src="assets/video1.mp4"></video>
+
+  <ion-slides autoplay="4000" pager loop>
+      <ion-slide>
+          <h4>Welcome</h4>
+          <p>Short videos, Great moments</p>
+      </ion-slide>
+      <ion-slide>
+          <h4>Enjoy life</h4>
+          <p>Share your moments of happiness</p>
+      </ion-slide>
+  </ion-slides>
+
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+      <ion-row>
+          <ion-col col-6 width-50><button ion-button icon-only color="dark" full (click)="login()">Login</button></ion-col>
+          <ion-col col-6 width-75><button ion-button color="dark" full >Sign up</button></ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-footer>

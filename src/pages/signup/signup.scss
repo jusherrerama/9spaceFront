@@ -1,0 +1,26 @@
+page-signup {
+
+  .scroll-content {
+    display: table !important;
+    width: 100% !important;
+    height: 100% !important;
+
+    form {
+        display: table-cell;
+        vertical-align: middle;
+
+        .header {
+          padding-bottom: 20px;
+
+
+
+
+        .button.button-light.active, .button.button-light.activated {
+          color: #fff;
+          opacity: inherit;
+        }
+      }
+
+      }
+    }
+}

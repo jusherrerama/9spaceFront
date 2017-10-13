@@ -1,32 +1,41 @@
 <ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
 </ion-header>
 
-<ion-content>
-
-  <video controls preload="auto" webkit-playsinline autoplay loop src="https://s3-sa-east-1.amazonaws.com/ninespace/uploads/57ecc04d-6355-45ea-be43-218f65a1ea00.mp4"></video>
-
-  <ion-slides autoplay="4000" pager loop>
-      <ion-slide>
-          <h4>Welcome</h4>
-          <p>Let us take care of you for the weekend</p>
-      </ion-slide>
-      <ion-slide>
-          <h4>Escape</h4>
-          <p>Let us take care of you for the weekend</p>
-      </ion-slide>
-      <ion-slide>
-          <h4>Luxury</h4>
-          <p>Let us take care of you for the weekend</p>
-      </ion-slide>
-  </ion-slides>
+<ion-content padding="true" scroll="false" >
+  <form [formGroup]="myForm" (ngSubmit)="loginUser()">
+    <ion-list>
+      <ion-item text-center>
+        <ion-img width="150" height="170"  src="assets/logo1.png" ></ion-img>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-label stacked>Email:</ion-label>
+        <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key" item-left></ion-icon>
+        <ion-label stacked>Password:</ion-label>
+        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark">Send</button>
+    </div>
+    </form>
 
 </ion-content>
 
 <ion-footer>
-  <ion-grid>
-      <ion-row>
-          <ion-col col-2><button ion-button icon-only color="secondary" full>Login</button></ion-col>
-          <ion-col col-10><button ion-button color="light" full>Logout</button></ion-col>
-      </ion-row>
-  </ion-grid>
+
+  <div text-center>
+  <a color="link" ion-button block clear (click)="goToSignup()">
+    Nueva cuenta
+  </a>   <a  color="link" ion-button block clear >
+    Olvide password
+  </a>
+  </div>
+
 </ion-footer>
