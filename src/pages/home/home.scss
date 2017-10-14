@@ -2,10 +2,14 @@ page-home {
   .video-container {
       position: relative !important;
       padding-bottom: 56.25% !important;
-      padding-top: 30px; height: 0; overflow: hidden !important;
+      padding-top: 0px; height: 0; overflow: hidden !important;
   }
 
   .video-container video{
       width: 100% !important;
+  }
+
+  .like {
+  	font-size: 30px;
   }
 }

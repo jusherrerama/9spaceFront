@@ -4,56 +4,23 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title color="light">9SPACE</ion-title>
+    <ion-buttons end>
+    <button ion-button icon-only>
+      <ion-icon name='search' ></ion-icon>
+    </button>
+    </ion-buttons>
+
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
+  <ion-list inset>
+    <ion-item *ngFor="let video of videos">
+      <h2>{{video.name}}</h2>
+        <p>{{video.time}}</p>
 
-  <div class="col col-50">
-            <div class="video-container">
-              <video controls preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
-                <source src="assets/video1.mp4" />
-              </video>
-            </div>
-          </div>
-
-
-          <div class="col col-50">
-            <h2>Video</h2>
-            <p>Brief description of this video</p>
-            <p>Brief description of this video</p>
-         </div>
-
-         <div class="col col-50">
-                   <div class="video-container">
-                     <video controls preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
-                       <source src="assets/video1.mp4" />
-                     </video>
-                   </div>
-                 </div>
-
-
-                 <div class="col col-50">
-                   <h2>Video</h2>
-                   <p>Brief description of this video</p>
-                   <p>Brief description of this video</p>
-                </div>
-
-
-
-                <div class="col col-50">
-                          <div class="video-container">
-                            <video controls preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
-                              <source src="assets/video1.mp4" />
-                            </video>
-                          </div>
-                        </div>
-
-
-                        <div class="col col-50">
-                          <h2>Video</h2>
-                          <p>Brief description of this video</p>
-                          <p>Brief description of this video</p>
-                       </div>
+     </ion-item>
+   </ion-list>
 
 </ion-content>
