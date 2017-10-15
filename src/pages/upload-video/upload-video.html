@@ -22,6 +22,48 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding="true" scroll="false"  >
+
+  <form [formGroup]="myForm" (ngSubmit)="addVideo()">
+    <ion-list>
+      <ion-item text-center>
+        <ion-img width="150" height="170"  src="assets/logo1.png" ></ion-img>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-label stacked>Name:</ion-label>
+        <ion-input formControlName="name" type="text" placeholder="Name" [(ngModel)]="video.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-icon name="albuns" item-left></ion-icon>
+        <ion-select  formControlName="category" [(ngModel)]="video.category" multiple="false" cancelText="Back" okText="Okay!">
+
+            <ion-option value="fun" >Fun</ion-option>
+            <ion-option value="scary">Scary</ion-option>
+            <ion-option value="others" selected="true">Others</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+        <button ion-button (click)="selectVideo()"><ion-icon name='camera'  color="light"></ion-icon></button>
+      </ion-item>
+      <ion-item>
+          <div class="video-container" *ngIf="videoURL">
+            <video  preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer" controls autoplay >
+              <source src={{this.videoURL}} />
+            </video>
+          </div>
+      </ion-item>
+    </ion-list>
+
+
+
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark">Register</button>
+    </div>
+  </form>
+
+
+
 
 </ion-content>

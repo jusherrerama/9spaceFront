@@ -37,6 +37,7 @@
         "cordova-plugin-file": "^4.3.3",
         "cordova-plugin-file-transfer": "^1.6.3",
         "cordova-plugin-ionic-webview": "^1.1.15",
+        "cordova-plugin-media-capture": "^1.4.3",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "git+https://github.com/apache/cordova-plugin-statusbar.git",
         "cordova-plugin-streaming-media": "^1.0.2",
@@ -66,7 +67,8 @@
             "cordova-plugin-camera": {},
             "com.hutchind.cordova.plugins.streamingmedia": {},
             "cordova-plugin-file": {},
-            "cordova-sqlite-storage": {}
+            "cordova-sqlite-storage": {},
+            "cordova-plugin-media-capture": {}
         },
         "platforms": [
             "android"

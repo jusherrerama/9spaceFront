@@ -31,20 +31,13 @@ export class SignupPage {
 	) {
       this.myForm = this.formBuilder.group({
           username: ['', Validators.required],
-	  email: ['', Validators.required],
-	  email2: ['', Validators.required],
+      	  email: ['', Validators.required],
+      	  email2: ['', Validators.required],
           password: ['', Validators.required]
         });
   }
 
-  signup(){	
-/*
-        this.user.username = this.myform.value.username;
-        this.user.email = this.myform.value.email;
-        this.user.email2 = this.myform.value.email2;
-        this.user.password = this.myform.value.password;
-*/	
-	
+  signup(){
 	this.userProvider.addUser(this.user)
 		    .then(data => {
 		      this.responseData = data;
@@ -53,9 +46,8 @@ export class SignupPage {
 			      this.navCtrl.push(LoginPage);
 		      }
 	              else {
-			      
+
 		     }
 		    });
 	}
-}																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							
-
+}

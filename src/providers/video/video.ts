@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders,HttpRequest } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 /*
@@ -46,12 +46,10 @@ export class VideoProvider {
       });
     });
   }
-/*
-  addVideo(data,file) {
-    const req = new HttpRequest('POST', this.apiUrl+'/videos', file, {
-      reportProgress: true,
-      });
+
+  addVideo(formData) {
+    return   this.http.post("http://192.168.178.20:8080/upload", formData);
   }
-*/
+
 
 }
