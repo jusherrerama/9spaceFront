@@ -8,14 +8,18 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { StartPage } from '../pages/start/start';
 
+import { SignupPage } from '../pages/signup/signup';
+
+import { VideoPage } from '../pages/video/video';
 import { SearchPage } from '../pages/search/search';
+import { UploadVideoPage } from '../pages/upload-video/upload-video';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = UploadVideoPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -26,7 +30,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage } ,
-      { title: 'List', component: SearchPage }
+      { title: 'Search', component: SearchPage }
     ];
 
   }

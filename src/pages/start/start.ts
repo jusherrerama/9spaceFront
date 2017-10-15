@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { SignupPage } from '../signup/signup';
 
 
 /**
@@ -26,9 +27,9 @@ export class StartPage {
   login(){
   this.navCtrl.push(LoginPage);
   }
-/*
+
   signup(){
-  this.navCtrl.push(Signup);
+  this.navCtrl.push(SignupPage);
   }
-*/
+
 }

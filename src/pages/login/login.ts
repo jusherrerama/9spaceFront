@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams,LoadingController, Loading, AlertCo
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
+import { UserProvider } from '../../providers/user/user';
+import { Storage } from '@ionic/storage';
+ 
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -17,33 +21,46 @@ import { SignupPage } from '../signup/signup';
 })
 export class LoginPage {
 
+  
+  responseData : any;
+  dataSet : any;
+  
+
+
   myForm: FormGroup;
   public loading:Loading;
+  user = { username: '', password: '' };
+
   constructor(public navCtrl: NavController,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController, public userProvider: UserProvider,private storage: Storage) {
 
       this.myForm = this.formBuilder.group({
-          email: ['', Validators.required],
+          username: ['', Validators.required],
           password: ['', Validators.required]
         });
 
+
+
   }
 
-  loginUser(){
+ loginUser(){
+	console.log(this.user); 
+  this.userProvider.login(this.user)
+      .then((result) => {
+        this.responseData = result;
+        if (this.responseData.username == this.user.username ) {
+	   this.storage.set('id',this.responseData.id );
+           //this.navCtrl.setRoot(page.component);
+           this.navCtrl.push(HomePage);
+        } else {}
+      }, (err) => {
 
-   console.log("Email:" + this.myForm.value.email);
-   console.log("Password:" + this.myForm.value.password);
-
-
-
-   this.loading = this.loadingCtrl.create({
-     dismissOnPageChange: true,
-   });
-   this.loading.present();
- }
+      });
+ 
+}
 
 
  goToSignup(){

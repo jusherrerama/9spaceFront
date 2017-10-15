@@ -7,15 +7,22 @@ import { VideoProvider } from '../../providers/video/video';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  users: any;
+  videos: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public videoProvider: VideoProvider) {
       this.getVideos();
   }
   getVideos() {
+
+    console.log(this.videoProvider.getVideos());
     this.videoProvider.getVideos()
     .then(data => {
-      this.users = data;
-      console.log(this.users);
+      this.videos = data;
+      console.log(this.videos);
     });
+  }
+  goToVideo(id){
+    
+
   }
 }

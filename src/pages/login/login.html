@@ -12,17 +12,17 @@
       </ion-item>
       <ion-item>
         <ion-icon name="person" item-left></ion-icon>
-        <ion-label stacked>Email:</ion-label>
-        <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+        <ion-label stacked>Username:</ion-label>
+        <ion-input formControlName="username" type="text" placeholder="Username" [(ngModel)]="user.username"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="key" item-left></ion-icon>
         <ion-label stacked>Password:</ion-label>
-        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+        <ion-input formControlName="password" type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark">Send</button>
+      <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark"  (click)="loginUser()">Send</button>
     </div>
     </form>
 
@@ -32,9 +32,9 @@
 
   <div text-center>
   <a color="link" ion-button block clear (click)="goToSignup()">
-    Nueva cuenta
+    Sign Up
   </a>   <a  color="link" ion-button block clear >
-    Olvide password
+    forgot password
   </a>
   </div>
 

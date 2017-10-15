@@ -12,13 +12,23 @@
       </ion-item>
       <ion-item>
         <ion-icon name="person" item-left></ion-icon>
+        <ion-label stacked>Name:</ion-label>
+        <ion-input formControlName="username" type="text" placeholder="Username" [(ngModel)]="user.username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
         <ion-label stacked>Email:</ion-label>
-        <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+        <ion-input formControlName="email" type="email" placeholder="Email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
+        <ion-label stacked>Repeat Email:</ion-label>
+        <ion-input formControlName="email2" type="email" placeholder="Repeat Email" [(ngModel)]="user.email2"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="key" item-left></ion-icon>
         <ion-label stacked>Password:</ion-label>
-        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+        <ion-input formControlName="password" type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
     </ion-list>
     <div padding>
@@ -26,3 +36,5 @@
     </div>
   </form>
 </ion-content>
+
+

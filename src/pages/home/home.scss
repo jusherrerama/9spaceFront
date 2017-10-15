@@ -3,13 +3,15 @@ page-home {
       position: relative !important;
       padding-bottom: 56.25% !important;
       padding-top: 0px; height: 0; overflow: hidden !important;
+      width: 100% !important;
   }
 
   .video-container video{
       width: 100% !important;
+
   }
 
   .like {
-  	font-size: 30px;
+  	font-size: 20px;
   }
 }
