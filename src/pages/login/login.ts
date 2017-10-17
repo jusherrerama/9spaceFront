@@ -5,7 +5,7 @@ import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
- 
+
 
 /**
  * Generated class for the LoginPage page.
@@ -21,10 +21,10 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage {
 
-  
+
   responseData : any;
   dataSet : any;
-  
+
 
 
   myForm: FormGroup;
@@ -47,19 +47,20 @@ export class LoginPage {
   }
 
  loginUser(){
-	console.log(this.user); 
   this.userProvider.login(this.user)
       .then((result) => {
         this.responseData = result;
         if (this.responseData.username == this.user.username ) {
-	   this.storage.set('id',this.responseData.id );
+	   this.storage.set('user_id',this.responseData.id );
            //this.navCtrl.setRoot(page.component);
            this.navCtrl.push(HomePage);
+
+           console.log(this.responseData.id )
         } else {}
       }, (err) => {
 
       });
- 
+
 }
 
 

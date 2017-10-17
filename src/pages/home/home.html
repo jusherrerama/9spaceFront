@@ -21,7 +21,7 @@
           <a color="link" ion-button block clear (click)="goToVideo( video.id)">    {{video.name}}   </a>
           <ion-card >
             <div class="video-container">
-              <video  preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer" controls autoplay >
+              <video  preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer" controls  >
                 <source src={{video.address.url}} />
               </video>
              </div>

@@ -11,6 +11,10 @@ import { SearchPage } from '../pages/search/search';
 import { SignupPage } from '../pages/signup/signup';
 import { VideoPage } from '../pages/video/video';
 import { UploadVideoPage } from '../pages/upload-video/upload-video';
+import { RecommendationPage } from '../pages/recommendation/recommendation';
+
+import { LikesPage } from '../pages/likes/likes';
+import { MyVideosPage } from '../pages/my-videos/my-videos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,6 +38,8 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
 
 import { IonicStorageModule } from '@ionic/storage';
 import { UserProvider } from '../providers/user/user';
+import { LikesProvider } from '../providers/likes/likes';
+import { CommentsProvider } from '../providers/comments/comments';
 /*
 import { VideoPlayer } from '@ionic-native/video-player';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
@@ -58,7 +64,10 @@ import { VideosProvider } from '../providers/videos/videos';
     SearchPage,
     SignupPage,
     VideoPage,
-    UploadVideoPage
+    UploadVideoPage,
+    RecommendationPage,
+    MyVideosPage,
+    LikesPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +85,10 @@ import { VideosProvider } from '../providers/videos/videos';
     SearchPage,
     SignupPage,
     VideoPage,
-    UploadVideoPage
+    UploadVideoPage,
+    RecommendationPage,
+    MyVideosPage,
+    LikesPage
   ],
   providers: [
     StatusBar,
@@ -89,7 +101,9 @@ import { VideosProvider } from '../providers/videos/videos';
     Camera,
     StreamingMedia,
     MediaCapture,
-    UserProvider
+    UserProvider,
+    LikesProvider,
+    CommentsProvider
 /*,
     VideoPlayer*/
   ]

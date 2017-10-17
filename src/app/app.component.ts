@@ -7,19 +7,23 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { StartPage } from '../pages/start/start';
+import { LikesPage } from '../pages/likes/likes';
 
 import { SignupPage } from '../pages/signup/signup';
 
 import { VideoPage } from '../pages/video/video';
 import { SearchPage } from '../pages/search/search';
 import { UploadVideoPage } from '../pages/upload-video/upload-video';
+import { RecommendationPage } from '../pages/recommendation/recommendation';
+import { MyVideosPage } from '../pages/my-videos/my-videos';
+import { VideoProvider } from '../providers/video/video';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = UploadVideoPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -29,8 +33,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage } ,
-      { title: 'Search', component: SearchPage }
+      { title: 'Search', component: SearchPage },
+      { title: 'My Space', component: MyVideosPage },
+      { title: 'Recommended Videos', component: RecommendationPage }
     ];
 
   }

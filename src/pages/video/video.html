@@ -3,7 +3,7 @@
     <button ion-button menuToggle color="light">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title color="light">titulo</ion-title>
+    <ion-title color="light" *ngIf="videos">{{videos.name}} </ion-title>
     <ion-buttons end>
     <button ion-button icon-only>
       <ion-icon name='search' ></ion-icon>
@@ -13,44 +13,51 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content padding>
-    <!--
-  <ion-card >
-      		<div class="video-container">
-      		  <video  preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer" controls autoplay >
-      		    <source src={{video.address.url}} />
+<ion-content padding class="action-sheets-basic-page">
+  <button ion-button block (click)="openMenu()" *ngIf="profile">
+    Options
+  </button>
+  <ion-card  *ngIf="videos">
+
+          <div class="video-container">
+      		  <video  preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer" controls  >
+      		    <source src={{videos.address.url}} />
       		  </video>
       		</div>
       		<ion-item >
       		  <button ion-button clear item-start><ion-icon name="thumbs-up" class = "like"></ion-icon></button>
       		  <button ion-button clear item-end > <ion-icon name="thumbs-down" class = "like" color="danger"></ion-icon></button>
-      		  <ion-badge item-start>{{video.likes}}</ion-badge>
-      		  <ion-badge item-end color="danger">{{video.dislikes}}</ion-badge>
+      		  <button ion-button clear item-start (click)="presentModal( videos.id )" > <ion-badge item-start >{{videos.likes}}</ion-badge></button>
+      		  <button ion-button clear item-end ><ion-badge item-end color="danger">{{videos.dislikes}}</ion-badge></button>
       		</ion-item>
       		<ion-item>
       		  <ion-icon name="person"></ion-icon>
       		  Shared by:
-      		  <ion-badge item-end>{{video.user_id}}</ion-badge>
+            <button ion-button clear  (click)="goToUser( user.id)"   *ngIf="user">
+               <ion-badge >{{user.username}}</ion-badge></button>
+
+
       		</ion-item>
+
           <ion-item>
       		  <ion-icon name="timer"></ion-icon>
       		  Time
-      		  <ion-badge item-end>{{video.time}}</ion-badge>
+      		  <ion-badge item-end>{{videos.time}}</ion-badge>
       		</ion-item>
       		<ion-item>
       		  <ion-icon name="albuns"></ion-icon>
       		  Category
-      		  <ion-badge item-end>{{video.category}}</ion-badge>
+      		  <ion-badge item-end>{{videos.category}}</ion-badge>
       		</ion-item>
           <ion-item>
       		  <ion-icon name="eye"></ion-icon>
       		  Visits
-      		  <ion-badge item-end>{{video.visits}}</ion-badge>
+      		  <ion-badge item-end>{{videos.visits}}</ion-badge>
       		</ion-item>
       		<ion-item>
       		  <ion-icon name="chatboxes"></ion-icon>
       		  Comments
-      		  <ion-badge item-end>{{video.comments}}</ion-badge>
+      		  <ion-badge item-end>{{videos.comments}}</ion-badge>
       		</ion-item>
           <ion-item color = "link">
              <button ion-button clear item-end><ion-icon name="send"  class = "like" color = "light" ></ion-icon></button>
@@ -58,7 +65,7 @@
             <ion-input  type="text" placeholder="Write here" ></ion-input>
         	</ion-item>
       </ion-card>
--->
+
 
 
 </ion-content>

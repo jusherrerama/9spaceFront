@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { VideoProvider } from '../../providers/video/video';
+import { Storage } from '@ionic/storage';
+import { VideoPage } from '../video/video';
 /**
  * Generated class for the RecommendationPage page.
  *
@@ -14,12 +17,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'recommendation.html',
 })
 export class RecommendationPage {
+    user_id: any;
+    videos: any;
+  constructor(private storage: Storage,public navCtrl: NavController, public navParams: NavParams , public videoProvider: VideoProvider) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+        storage.get('user_id').then((val) => {
+            this.user_id =val;
+            this.getVideosR(val);
+          });
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RecommendationPage');
+
+  getVideosR(id) {
+
+    this.videoProvider.getMyVideosR(id)
+    .then(data => {
+      this.videos = data;
+      console.log("estossonnnnnn"+this.videos);
+    });
+
+  }
+  goToVideo(id){
+    this.navCtrl.push(VideoPage,{ "param1":id});
   }
 
 }

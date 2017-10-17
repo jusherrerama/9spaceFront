@@ -30,16 +30,37 @@ export class VideoProvider {
   }
   getMyVideos(id) {
       return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/videos/'+id).subscribe(data => {
+      this.http.get(this.apiUrl+'/videosByUser/'+id).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
       });
     });
   }
+  getMyVideosR(id) {
+      return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/recomendate/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+
+  }
+  addMyVideosR(video_id,user_id) {
+      return new Promise(resolve => {
+      this.http.post(this.apiUrl+'recomendation/'+user_id+'/'+video_id,user_id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+
+  }
+
   getVideo(id) {
       return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/videos/1').subscribe(data => {
+      this.http.get(this.apiUrl+'/videos/'+id).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
