@@ -59,11 +59,27 @@
       		  Comments
       		  <ion-badge item-end>{{videos.comments}}</ion-badge>
       		</ion-item>
+          <form [formGroup]="myForm" >
           <ion-item color = "link">
-             <button ion-button clear item-end><ion-icon name="send"  class = "like" color = "light" ></ion-icon></button>
-            <ion-label stacked>Add your comment:</ion-label>
-            <ion-input  type="text" placeholder="Write here" ></ion-input>
+
+                <button ion-button clear item-end (click)="addComment()"  ><ion-icon name="send"  class = "like" color = "light" ></ion-icon></button>
+               <ion-label stacked>Add your comment:</ion-label>
+               <ion-input formControlName="text" type="text" placeholder="Write here"  [(ngModel)]="newComment.text"></ion-input>
+
+
         	</ion-item>
+            </form >
+          <ion-list inset>
+              <ion-item *ngFor="let comment of comments" >
+
+                    <ion-item >
+                       <ion-icon name="chatboxes"></ion-icon>
+                          {{comment.text}}
+
+                     </ion-item>
+             </ion-item>
+           </ion-list>
+
       </ion-card>
 
 
