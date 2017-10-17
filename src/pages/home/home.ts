@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { VideoProvider } from '../../providers/video/video';
 import { VideoPage } from '../video/video';
 import { Storage } from '@ionic/storage';
+import { SearchPage } from '../search/search';
 
 @Component({
   selector: 'page-home',
@@ -28,7 +29,9 @@ export class HomePage {
   goToVideo(id){
 
         this.navCtrl.push(VideoPage,{ "param1":id});
+  }
 
-
+  search(){
+    this.navCtrl.push(SearchPage);
   }
 }

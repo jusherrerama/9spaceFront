@@ -13,6 +13,7 @@ page-start {
       transform: translateX(-50%) translateY(-50%);
   }
 
+
   ion-header img {
       opacity: 0.8;
       padding: 20px;
@@ -29,6 +30,7 @@ page-start {
 
       h4 {
           font-weight: bold;
+          text-shadow: -0.2px 0 black, 0 0.2px black, 0.2px 0 black, 0 -0.2px black;
       }
 
       .swiper-pagination-bullet {
@@ -36,6 +38,14 @@ page-start {
       }
 
   }
+
+  h5 {
+          text-align: center;
+          font-size: 350%;
+            font-weight: bold;
+            color: white;
+            text-shadow: -0.6px 0 black, 0 0.6px black, 0.6px 0 black, 0 -0.6px black;
+        }
 
   button {
       font-weight: bold;

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+import { VideoProvider } from '../../providers/video/video';
 
 /**
  * Generated class for the SearchPage page.
@@ -15,7 +17,47 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public videoProvider: VideoProvider) {
+  }
+
+  
+  @ViewChild('text') text;
+  videos: any;
+
+  searchVideosByName(){
+    this.getVideosByName(this.text.value);
+  }
+  searchVideosByCategory(){
+    this.getVideosByCategory(this.text.value);
+  }
+  searchVideosByUser(){
+    this.getVideosByUser(this.text.value);
+  }
+
+  getVideosByName(val){
+    this.videoProvider.getVideosByName(val)
+    .then(data => {
+      this.videos = data;
+      console.log(this.videos);
+    });
+  	
+  }
+
+  getVideosByCategory(val){
+    this.videoProvider.getVideosByCategory(val)
+    .then(data => {
+      this.videos = data;
+      console.log(this.videos);
+    });
+  }
+
+  getVideosByUser(val){
+    this.videoProvider.getVideosByUser(val)
+    .then(data => {
+      this.videos = data;
+      console.log(this.videos);
+    });
   }
 
   ionViewDidLoad() {
