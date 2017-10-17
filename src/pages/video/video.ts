@@ -73,12 +73,13 @@ export class VideoPage {
   }
   openMenu() {
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Video OPtions',
+
       buttons: [
         {
-          text: 'Destructive',
+          text: 'Delete Vidio',
           role: 'destructive',
           handler: () => {
+             this.deleteVideo();
             console.log('Destructive clicked');
           }
         },{
@@ -122,6 +123,11 @@ export class VideoPage {
       this.user = data;
       console.log(this.user);
     });
+  }
+  deleteVideo() {
+    this.videoProvider.deleteVideo(this.videos.id)
+
+    this.navCtrl.push(MyVideosPage,{ "param1":this.videos.user_id});
   }
   getComments() {
 

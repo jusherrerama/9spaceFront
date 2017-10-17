@@ -103,5 +103,14 @@ getVideosByName(name){
       });
     });
   }
+  deleteVideo(id){
+    return new Promise(resolve => {
+      this.http.delete(this.apiUrl+'videos/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 
 }
