@@ -19,23 +19,23 @@
       <ion-label floating color="dark">Search</ion-label>
       <ion-input type="text" #text></ion-input>
     </ion-item>
-    
+
       <h1> Search by:</h1>
-    
+
     <ion-grid>
       <ion-row>
 
     <ion-col col-4 width-50><button ion-button block round color="dark" (click)="searchVideosByName()">Name</button></ion-col>
-    
+
 
     <ion-col col-4 width-50><button ion-button block round color="dark" (click)="searchVideosByCategory()">Category</button></ion-col>
-    
-    
+
+
     <ion-col col-4 width-50><button ion-button block round color="dark" (click)="searchVideosByUser()">User</button></ion-col>
 
   </ion-row>
 </ion-grid>
-    
+
 
 
     <ion-list inset>
@@ -43,9 +43,9 @@
           <a color="link" ion-button block clear (click)="goToVideo( video.id)">    {{video.name}}   </a>
           <ion-card >
             <div class="video-container">
-              <video  preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer" controls >
-                <source src={{video.url_address}} />
-              </video>
+              <video src={{video.address.url}}  controls  >
+
+        		  </video>
              </div>
              <ion-item >
                 <button ion-button clear item-start><ion-icon name="thumbs-up" class = "like"></ion-icon></button>

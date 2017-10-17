@@ -14,8 +14,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 */
 @Injectable()
 export class UserProvider {
-  apiUrl = 'http://192.168.99.101:4000/';
-  dat = {}; 
+  apiUrl = 'http://192.168.43.153:4000/';
+  dat = {};
   constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
@@ -32,7 +32,7 @@ export class UserProvider {
 
 
   addUser(data) {
-	  
+
           console.log(JSON.stringify(data));
 	  return new Promise((resolve, reject) => {
 	    this.http.post(this.apiUrl+'/register', JSON.stringify(data), {
@@ -50,7 +50,7 @@ export class UserProvider {
     return new Promise((resolve, reject) => {
 
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-  
+
     this.http.post(this.apiUrl+'/login',JSON.stringify(credentials), {
     headers: new HttpHeaders().set('Content-Type', 'application/json')
     })
@@ -61,7 +61,7 @@ export class UserProvider {
       });
   });
 
-   
+
 
   }
 

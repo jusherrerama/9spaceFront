@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SearchPage } from '../search/search';
 
 import { VideoProvider } from '../../providers/video/video';
 import { Storage } from '@ionic/storage';
@@ -28,14 +29,18 @@ export class RecommendationPage {
           });
 
   }
+  search(){
+    this.navCtrl.push(SearchPage);
 
+  }
 
   getVideosR(id) {
-
+    console.log("estossonnnnnn"+id);
     this.videoProvider.getMyVideosR(id)
     .then(data => {
       this.videos = data;
-      console.log("estossonnnnnn"+this.videos);
+      console.log("estossonnnnnn");
+      console.log(this.videos);
     });
 
   }

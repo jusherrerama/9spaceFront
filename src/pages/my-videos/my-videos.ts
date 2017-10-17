@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { VideoProvider } from '../../providers/video/video';
 import { VideoPage } from '../video/video';
+import { SearchPage } from '../search/search';
 
 import { UserProvider } from '../../providers/user/user';
 /**
@@ -33,7 +34,15 @@ export class MyVideosPage {
 
       this.user_id_to_see = this.navParams.get('param1');
   }
+
   videos: any;
+
+  search(){
+    this.navCtrl.push(SearchPage);
+
+  }
+
+
   getuser() {
 
     this.userProvider.getUser(this.user_id)

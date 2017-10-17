@@ -23,7 +23,7 @@ import { VideoProvider } from '../providers/video/video';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = StartPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -34,7 +34,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'My Space', component: MyVideosPage },
-      { title: 'Recommended Videos', component: RecommendationPage }
+      { title: 'Recommended Videos', component: RecommendationPage },
+      { title: 'Upload Video Page', component: UploadVideoPage }
+
     ];
 
   }
@@ -57,7 +59,7 @@ export class MyApp {
   signout(){
     this.alert('Loged Out', '');
     this.app.getRootNav().setRoot( StartPage );
-  } 
+  }
 
   alert(tittle: string, message: string) {
     const alert = this.alertCtrl.create({

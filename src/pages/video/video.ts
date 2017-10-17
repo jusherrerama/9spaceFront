@@ -43,6 +43,8 @@ export class VideoPage {
            console.log("acacaca"+val)
 
            this.usser(val);
+           this.addMyVideosR();
+           this.getVideo();
          });
 
 
@@ -50,8 +52,7 @@ export class VideoPage {
          this.user_id_to_see = this.navParams.get('param1');
 
          this.newComment.user_id = this.user_id_to_see
-        this.addMyVideosR();
-        this.getVideo();
+
 
   }
   presentModal(id) {
@@ -98,7 +99,7 @@ export class VideoPage {
     console.log(this.video_id);
 
 
-    this.videoProvider.addMyVideosR(this.video_id,1)
+    this.videoProvider.addMyVideosR(this.video_id,this.user_id )
     .then(data => {
       console.log(data);
     });

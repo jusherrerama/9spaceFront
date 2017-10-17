@@ -53,7 +53,7 @@ export class LoginPage {
         if (this.responseData.username == this.user.username ) {
 	   this.storage.set('user_id',this.responseData.id );
            //this.navCtrl.setRoot(page.component);
-           this.navCtrl.push(HomePage);
+           this.navCtrl.setRoot(HomePage);
 
            console.log(this.responseData.id )
         } else {}
@@ -67,6 +67,7 @@ export class LoginPage {
  goToSignup(){
    this.navCtrl.push('SignupPage');
  }
+
 
  goToResetPassword(){
    this.navCtrl.push('ResetPasswordPage');
