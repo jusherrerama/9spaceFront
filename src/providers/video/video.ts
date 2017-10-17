@@ -73,4 +73,35 @@ export class VideoProvider {
   }
 
 
+getVideosByName(name){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'searchVideoName/'+name).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+
+  }
+
+  getVideosByCategory(category){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'searchVideoCategory/'+category).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getVideosByUser(user){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'searchVideoUser/'+user).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
 }
