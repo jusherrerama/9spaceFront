@@ -17,17 +17,27 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'likes.html',
 })
 export class LikesPage {
-  likes: any;
-  video_id_to_see: any;
 
-  like = { user_id: '', video_id: '' , like_value: '', dislike_value: ''};
-  responseData : any;
+  video_id_to_see: any;
+  likes: any;
+    like = { user_id: '', video_id: '' , like_value: '', dislike_value: ''};
+    responseData : any;
   user: any;
+  type: any;
+  title: any;
   constructor(public viewCtrl: ViewController,public navCtrl: NavController,
      public navParams: NavParams, public likesProvider: LikesProvider, public userProvider: UserProvider) {
 
      this.video_id_to_see = this.navParams.get('param1');
+     this.type = this.navParams.get('type');
+     if (this.type == 1){
         this.getLikes();
+        this.title= 'Likes'
+     }else{
+       this.getdisLikes();
+       this.title= 'Dislikes'
+     }
+
   }
   getuser(id) {
 
@@ -40,6 +50,15 @@ export class LikesPage {
   getLikes() {
     console.log("ACCACACACACA"+ this.video_id_to_see);
     this.likesProvider.getLikesByVideo(this.video_id_to_see)
+    .then(data => {
+      this.likes = data;
+      console.log(this.likes);
+    });
+
+  }
+  getdisLikes() {
+    console.log("ACCACACACACA"+ this.video_id_to_see);
+    this.likesProvider.getdisLikesByVideo(this.video_id_to_see)
     .then(data => {
       this.likes = data;
       console.log(this.likes);

@@ -55,11 +55,41 @@ export class VideoPage {
 
 
   }
-  presentModal(id) {
-      console.log("aSIII ES EPERFIILL ENTRAsssssssssssssssA" + id)
-     this.navCtrl.push(LikesPage,{ "param1":id});
-   }
+  like_color: any;
+  dislike_color: any;
+  dislike(){
+    if (this.dislike_color){//Quitar like
+          this.dislike_color = false;
+    }else {//Ponet dislike
+      if (this.like_color){//quitar like , poner dislike
+          this.dislike_color = true;
+          this.like_color = false;
+      }else {//like por primera vez
+         this.dislike_color = true;
+      }
+    }
 
+  }
+  like(){
+    if (this.like_color){//Quitar like
+          this.like_color = false;
+    }else {//Ponet dislike
+      if (this.dislike_color){//quitar dislike , poner like
+          this.like_color = true;
+          this.dislike_color = false;
+      }else {//like por primera vez
+         this.like_color = true;
+      }
+    }
+  }
+  likesVideo(id) {
+      console.log("aSIII ES EPERFIILL ENTRAsssssssssssssssA" + id)
+     this.navCtrl.push(LikesPage,{ "param1":id,"type":'likes' });
+   }
+   dislikesVideo(id) {
+       console.log("aSIII ES EPERFIILL ENTRAsssssssssssssssA" + id)
+      this.navCtrl.push(LikesPage,{ "param1":id,"type":'dislike'});
+    }
 
   usser(id){
       this.user_id =id;

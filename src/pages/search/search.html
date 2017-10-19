@@ -48,9 +48,11 @@
         		  </video>
              </div>
              <ion-item >
-                <button ion-button clear item-start><ion-icon name="thumbs-up" class = "like"></ion-icon></button>
-                <button ion-button clear item-end > <ion-icon name="thumbs-down" class = "like" color="danger"></ion-icon></button>
-                <ion-badge item-start>{{video.likes}}</ion-badge>
+               <button (click)="like()" *ngIf="like_color" ion-button clear item-start  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
+               <button (click)="like()" *ngIf="!like_color" ion-button clear item-start  color ='link'  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
+               <button (click)="dislike()" *ngIf="dislike_color" ion-button clear item-end color ='danger' > <ion-icon name="thumbs-down" class = "like"  ></ion-icon></button>
+               <button (click)="dislike()" *ngIf="!dislike_color" ion-button clear item-end color ='link' > <ion-icon name="thumbs-down" class = "like"  ></ion-icon></button>
+               <ion-badge item-start>{{video.likes}}</ion-badge>
                 <ion-badge item-end color="danger">{{video.dislikes}}</ion-badge>
               </ion-item>
             </ion-card>

@@ -14,12 +14,21 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 */
 @Injectable()
 export class LikesProvider {
-  apiUrl = 'http://192.168.43.153:4000/';
+  apiUrl = 'http://192.168.99.101:4000/'; //'http://192.168.43.153:4000/';
   dat = {};
   constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
 
+    userLike(user_id,videos_id) {
+      return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/likes/likes_user_video/'+videos_id+"/"+user_id ).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+   }
   getLikesByVideo(id) {
     return new Promise(resolve => {
     this.http.get(this.apiUrl+'/likes/likes_by_video/'+id ).subscribe(data => {
@@ -29,7 +38,7 @@ export class LikesProvider {
     });
   });
  }
- getDLikesByVideo(id) {
+ getdisLikesByVideo(id) {
    return new Promise(resolve => {
    this.http.get(this.apiUrl+'/likes/dislikes_by_video/'+id ).subscribe(data => {
      resolve(data);

@@ -23,7 +23,7 @@ import { VideoProvider } from '../providers/video/video';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StartPage;
+  rootPage: any = RecommendationPage;
 
   pages: Array<{title: string, component: any}>;
 

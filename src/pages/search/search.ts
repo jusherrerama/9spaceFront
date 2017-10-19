@@ -21,9 +21,36 @@ export class SearchPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public videoProvider: VideoProvider) {
   }
 
-  
+
   @ViewChild('text') text;
   videos: any;
+  like_color: any;
+  dislike_color: any;
+  dislike(){
+    if (this.dislike_color){//Quitar like
+          this.dislike_color = false;
+    }else {//Ponet dislike
+      if (this.like_color){//quitar like , poner dislike
+          this.dislike_color = true;
+          this.like_color = false;
+      }else {//like por primera vez
+         this.dislike_color = true;
+      }
+    }
+
+  }
+  like(){
+    if (this.like_color){//Quitar like
+          this.like_color = false;
+    }else {//Ponet dislike
+      if (this.dislike_color){//quitar dislike , poner like
+          this.like_color = true;
+          this.dislike_color = false;
+      }else {//like por primera vez
+         this.like_color = true;
+      }
+    }
+  }
 
   searchVideosByName(){
     this.getVideosByName(this.text.value);
@@ -41,7 +68,7 @@ export class SearchPage {
       this.videos = data;
       console.log(this.videos);
     });
-  	
+
   }
 
   getVideosByCategory(val){
