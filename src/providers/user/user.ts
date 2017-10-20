@@ -14,7 +14,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 */
 @Injectable()
 export class UserProvider {
-  apiUrl = 'http://192.168.99.101:4000/'; //'http://192.168.43.153:4000/';
+  apiUrl ='http://192.168.0.121:4000/'; // 'http://192.168.99.101:4000/'; //'http://192.168.43.153:4000/';
   dat = {};
   constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');

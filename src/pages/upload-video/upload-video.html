@@ -49,7 +49,7 @@
       </ion-item>
       <ion-item>
           <div class="video-container" *ngIf="videoURL">
-            <video  preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer" controls autoplay >
+            <video >
               <source src={{this.videoURL}} />
             </video>
           </div>
@@ -59,7 +59,7 @@
 
 
     <div padding>
-      <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark">Register</button>
+      <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark" (click)="addVideo()" >Upload</button>
     </div>
   </form>
 

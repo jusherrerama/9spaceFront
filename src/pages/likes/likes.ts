@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams , ViewController} from 'ionic-angul
 import { LikesProvider } from '../../providers/likes/likes';
 
 import { UserProvider } from '../../providers/user/user';
+
 /**
  * Generated class for the LikesPage page.
  *
@@ -40,7 +41,6 @@ export class LikesPage {
 
   }
   getuser(id) {
-
     this.userProvider.getUser(id)
     .then(data => {
       this.user.append( data);

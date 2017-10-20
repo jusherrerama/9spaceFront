@@ -32,9 +32,7 @@ videoURL: any;
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public videoProvider: VideoProvider,public formBuilder: FormBuilder,private mediaCapture: MediaCapture,private streamingMedia: StreamingMedia) {
     this.myForm = this.formBuilder.group({
         name: ['', Validators.required],
-        category: ['', Validators.required],
-        user_id: ['', Validators.required],
-        address: ['', Validators.required]
+        category: ['', Validators.required]
       });
 
   }
@@ -42,12 +40,12 @@ videoURL: any;
   public selectVideo(){
       this.videoURL = null;
       let options: CaptureVideoOptions = { limit: 1, duration: 10 };
-      this.videoFileName= this.mediaCapture.captureVideo(options) .then(
+      this.videoFileName =this.mediaCapture.captureVideo(options) .then(
           (data: MediaFile[]) => {
 
             let videoData = JSON.stringify(data);
             let res1 = JSON.parse(videoData);
-
+            //this.videoFileName = data;
             this.videoURL = res1[0]['fullPath'];
 
             let alert = this.alertCtrl.create({
@@ -63,6 +61,13 @@ videoURL: any;
 }
 addVideo(){
     this.video['address']=this.videoFileName;
+    let alert = this.alertCtrl.create({
+      title:"estees el video",
+      subTitle:  this.videoFileName ,
+      buttons: ['OK']
+    });
+    alert.present();
+
     this.videoProvider.addVideo(this.video);
 
 /*

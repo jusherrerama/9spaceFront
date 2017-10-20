@@ -10,10 +10,6 @@ page-upload-video {
 
         .header {
           padding-bottom: 20px;
-
-
-
-
         .button.button-light.active, .button.button-light.activated {
           color: #fff;
           opacity: inherit;
@@ -21,23 +17,23 @@ page-upload-video {
       }
 
       }
-      .video-container {
-          position: relative !important;
-          padding-bottom: 56.25% !important;
-          padding-top: 0px; height: 0; overflow: hidden !important;
-          width: 100% !important;
-      }
 
-      .video-container video{
-          width: 100% !important;
-
-      }
-
-      .like {
-        font-size: 20px;
-      }
     }
-  
+    .video-container {
+        position: relative !important;
+        padding-bottom: 56.25% !important;
+        padding-top: 0px; height: 0; overflow: hidden !important;
+        width: 100% !important;
+    }
+
+    .video-container video{
+        width: 100% !important;
+
+    }
+
+    .like {
+      font-size: 20px;
+    }
 
 
 }

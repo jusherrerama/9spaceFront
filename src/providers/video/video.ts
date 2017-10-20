@@ -13,7 +13,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 */
 @Injectable()
 export class VideoProvider {
-  apiUrl = 'http://192.168.99.101:4000/'; //'http://192.168.43.153:4000/';
+  apiUrl = 'http://192.168.0.121:4000/'; //'http://192.168.43.153:4000/'; //'http://192.168.99.101:4000/'; //
   dat = {};
 
   constructor(public http: HttpClient) {
@@ -68,9 +68,20 @@ export class VideoProvider {
     });
   }
 
-  addVideo(formData) {
-    return   this.http.post("http://192.168.178.20:8080/upload", formData);
-  }
+  addVideo(data) {
+
+	  return new Promise((resolve, reject) => {
+	    this.http.post(this.apiUrl+'/videos', (data), {
+    headers: new HttpHeaders().set('enctype', 'multipart/form-data')
+    })
+	      .subscribe(res => {
+		resolve(res);
+	      }, (err) => {
+		reject(err);
+	      });
+	  });
+   }
+
 
 
 getVideosByName(name){

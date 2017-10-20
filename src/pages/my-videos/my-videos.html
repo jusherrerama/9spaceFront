@@ -18,7 +18,7 @@
 
    <ion-list inset>
        <ion-item *ngFor="let video of videos">
-          <a color="link" ion-button block clear (click)="goToVideo( video.id)">    {{video.name}}   </a>
+          <a color="link" ion-button block clear (click)="goToVideo( video.id, video.user_id)">    {{video.name}}   </a>
           <ion-card >
             <div class="video-container">
               <video src={{video.address.url}}  controls  >
@@ -26,13 +26,13 @@
         		  </video>
              </div>
              <ion-item >
-               <button (click)="like()" *ngIf="like_color" ion-button clear item-start  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
-               <button (click)="like()" *ngIf="!like_color" ion-button clear item-start  color ='link'  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
-               <button (click)="dislike()" *ngIf="dislike_color" ion-button clear item-end color ='danger' > <ion-icon name="thumbs-down" class = "like"  ></ion-icon></button>
-               <button (click)="dislike()" *ngIf="!dislike_color" ion-button clear item-end color ='link' > <ion-icon name="thumbs-down" class = "like"  ></ion-icon></button>
-               <ion-badge item-start>{{video.likes}}</ion-badge>
-                <ion-badge item-end color="danger">{{video.dislikes}}</ion-badge>
-              </ion-item>
+               <button (click)="like(video.id)" *ngIf="this.likes.get(video.id)" ion-button clear item-start  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
+               <button (click)="like(video.id)" *ngIf="!this.likes.get(video.id)" ion-button clear item-start  color ='link'  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
+               <button (click)="dislike(video.id)" *ngIf="this.dislikes.get(video.id)" ion-button clear item-end color ='danger' > <ion-icon name="thumbs-down" class = "like"  ></ion-icon></button>
+               <button (click)="dislike(video.id)" *ngIf="!this.dislikes.get(video.id)" ion-button clear item-end color ='link' > <ion-icon name="thumbs-down" class = "like"  ></ion-icon></button>
+               <button ion-button clear item-start (click)="likesVideo( video.id )" > <ion-badge item-start >{{video.likes}}</ion-badge></button>
+               <button ion-button clear item-end (click)="dislikesVideo( video.id )" ><ion-badge item-end color="danger">{{video.dislikes}}</ion-badge></button>
+            </ion-item>
             </ion-card>
       </ion-item>
     </ion-list>
