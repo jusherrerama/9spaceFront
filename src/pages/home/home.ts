@@ -28,7 +28,10 @@ export class HomePage {
   p_like: any;
   c_like: any;
   responseData : any;
-
+  ionViewWillEnter() {
+    console.log("I'm alive!");
+    this.getVideos();
+  }
   likesVideo(id) {
      this.navCtrl.push(LikesPage,{ "param1":id,"type":1 });
    }
@@ -102,7 +105,9 @@ userLike(id) {
     this.videoProvider.getVideos()
     .then(data => {
       this.videos = data;
-      console.log(this.videos);
+      for (let entry of this.videos) {
+          this.userLike(entry.id);
+      }
     });
 
   }

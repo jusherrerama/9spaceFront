@@ -203,6 +203,7 @@ export class VideoPage {
     .then(data => {
       this.comments = data;
       console.log(this.comments);
+
     });
 
   }
@@ -212,7 +213,8 @@ export class VideoPage {
   this.commentsProvider.addComment(this.newComment)
         .then(data => {
           this.responseData = data;
-          console.log(this.responseData);
+          console.log(this.responseData);          
+          this.myForm.reset()
           this.getVideo(this.video_id)
         });
   }

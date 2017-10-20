@@ -5,8 +5,6 @@ import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
-
-
 /**
  * Generated class for the LoginPage page.
  *
@@ -24,9 +22,6 @@ export class LoginPage {
 
   responseData : any;
   dataSet : any;
-
-
-
   myForm: FormGroup;
   public loading:Loading;
   user = { username: '', password: '' };
@@ -56,7 +51,15 @@ export class LoginPage {
            this.navCtrl.setRoot(HomePage);
 
            console.log(this.responseData.id )
-        } else {}
+        } else {
+          let alert = this.alertCtrl.create({
+              title: ' Impossible to login',
+              subTitle: '  Username or Password incorrect',
+              buttons: ['OK']
+            });
+            alert.present();
+
+        }
       }, (err) => {
 
       });

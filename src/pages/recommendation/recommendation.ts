@@ -39,6 +39,10 @@ export class RecommendationPage {
             this.getVideosR(val);
           });
   }
+  ionViewWillEnter() {
+    console.log("I'm alive!");
+    this.getVideosR(this.user_id );
+  }
   likesVideo(id) {
      this.navCtrl.push(LikesPage,{ "param1":id,"type":1 });
    }
