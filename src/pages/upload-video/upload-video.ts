@@ -2,10 +2,11 @@ import { Component, ViewChild  } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 /*import { VideoPlayer ,VideoOptions } from '@ionic-native/video-player';*/
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions,CaptureVideoOptions } from '@ionic-native/media-capture';
-
+import { Base64 } from '@ionic-native/base64';
 import { VideoProvider } from '../../providers/video/video';
 /**
  * Generated class for the UploadVideoPage page.
@@ -13,6 +14,7 @@ import { VideoProvider } from '../../providers/video/video';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
 
 @IonicPage()
 @Component({
@@ -22,23 +24,35 @@ import { VideoProvider } from '../../providers/video/video';
 export class UploadVideoPage {
  videoFileName:any;
  myForm: FormGroup;
- video = { name: '', category: '', user_id: ''  };
+ video = { name: '', category: '', user_id: -1};
  responseData : any;
-
+ imageURI:any;
+ imageB64:any;
  @ViewChild('myvideo') myVideo: any;
 videoURL: any;
 
 
-  constructor(public alertCtrl: AlertController,public navCtrl: NavController, public videoProvider: VideoProvider,public formBuilder: FormBuilder,private mediaCapture: MediaCapture,private streamingMedia: StreamingMedia) {
+  constructor(private base64: Base64,public alertCtrl: AlertController,private camera: Camera,public navCtrl: NavController, public videoProvider: VideoProvider,public formBuilder: FormBuilder,private mediaCapture: MediaCapture,private streamingMedia: StreamingMedia) {
     this.myForm = this.formBuilder.group({
         name: ['', Validators.required],
         category: ['', Validators.required]
       });
 
   }
+  getVideo() {
+    const options: CameraOptions = {
+      quality: 100,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      mediaType: this.camera.MediaType.VIDEO
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      this.videoURL = imageData;
+    }, (err) => {
+    });
+  }
 
   public selectVideo(){
-      this.videoURL = null;
       let options: CaptureVideoOptions = { limit: 1, duration: 10 };
       this.videoFileName =this.mediaCapture.captureVideo(options) .then(
           (data: MediaFile[]) => {
@@ -48,40 +62,42 @@ videoURL: any;
             //this.videoFileName = data;
             this.videoURL = res1[0]['fullPath'];
 
-            let alert = this.alertCtrl.create({
-              title: this.videoURL,
-              subTitle: videoData,
-              buttons: ['OK']
-            });
-            alert.present();
+
           },
           (err: CaptureError) => console.error(err)
         );
 
 }
 addVideo(){
-    this.video['address']=this.videoFileName;
-    let alert = this.alertCtrl.create({
-      title:"estees el video",
-      subTitle:  this.videoFileName ,
-      buttons: ['OK']
+    this.video.user_id = 1;
+    let filePath: string = this.videoURL;
+    this.base64.encodeFile(filePath).then((base64File: string) => {
+      this.imageB64 = base64File;
+      this.imageB64 = "data:video/mp4"   + this.imageB64.substring(12,this.imageB64.length)
+      this.video['address']=this.imageB64 ;
+      let alert = this.alertCtrl.create({
+        title: "respuesta",
+        subTitle: this.imageB64,
+        buttons: ['OK']
+      });
+      alert.present();
+      this.videoProvider.addVideo(this.video).then(data => {
+      this.responseData = data;
+      console.log(this.responseData);
+      let alert = this.alertCtrl.create({
+        title: "respuesta",
+        subTitle: this.responseData,
+        buttons: ['OK']
+      });
+      alert.present();
+      },
+      (err: CaptureError) => console.error(err)
+      );
+    }, (err) => {
+      console.log(err);
     });
-    alert.present();
 
-    this.videoProvider.addVideo(this.video);
 
-/*
-.then(data => {
-  this.responseData = data;
-  console.log(this.responseData);
-        if(this.responseData.email2 == this.user.email2 && this.responseData.email == this.user.email && this.responseData.username == this.user.username ){
 
-        }
-              else {
-
-       }
-*/
-      ;
-}
-
+  }
 }

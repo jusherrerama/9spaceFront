@@ -24,7 +24,7 @@
 
 <ion-content padding="true" scroll="false"  >
 
-  <form [formGroup]="myForm" (ngSubmit)="addVideo()">
+  <form [formGroup]="myForm" >
     <ion-list>
       <ion-item text-center>
         <ion-img width="150" height="170"  src="assets/logo1.png" ></ion-img>
@@ -48,12 +48,16 @@
         <button ion-button (click)="selectVideo()"><ion-icon name='camera'  color="light"></ion-icon></button>
       </ion-item>
       <ion-item>
-          <div class="video-container" *ngIf="videoURL">
-            <video controls >
-              <source src={{this.videoURL}} />
-            </video>
-          </div>
+        videos
+        <button ion-button color="secondary" (click)="getVideo()">Get video</button>
       </ion-item>
+      <!--
+      <div class="video-container" *ngIf="videoURL">
+        <video controls >
+          <source src={{this.videoURL}} />
+        </video>
+      </div>
+    -->
       <ion-item>
         <div padding>
           <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark" (click)="addVideo()" >Upload</button>
@@ -65,7 +69,11 @@
 
 
   </form>
-
+  <div class="video-container" *ngIf="videoURL">
+    <video controls >
+      <source src={{this.videoURL}} />
+    </video>
+  </div>
 
 
 

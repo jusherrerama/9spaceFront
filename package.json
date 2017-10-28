@@ -20,6 +20,7 @@
         "@angular/http": "^4.4.5",
         "@angular/platform-browser": "^4.4.5",
         "@angular/platform-browser-dynamic": "^4.4.5",
+        "@ionic-native/base64": "^4.3.2",
         "@ionic-native/camera": "^4.3.1",
         "@ionic-native/core": "4.3.0",
         "@ionic-native/file": "^4.3.1",
@@ -29,6 +30,8 @@
         "@ionic-native/status-bar": "4.3.0",
         "@ionic-native/streaming-media": "^4.3.1",
         "@ionic/storage": "^2.0.1",
+        "com-badrit-base64": "^0.2.0",
+        "com.hutchind.cordova.plugins.streamingmedia": "~0.1.4",
         "cordova-android": "^6.2.3",
         "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-compat": "^1.2.0",
@@ -47,8 +50,7 @@
         "ionicons": "3.0.0",
         "rxjs": "5.4.3",
         "sw-toolbox": "3.6.0",
-        "zone.js": "0.8.18",
-        "com.hutchind.cordova.plugins.streamingmedia": "~0.1.4"
+        "zone.js": "0.8.18"
     },
     "devDependencies": {
         "@ionic/app-scripts": "3.0.0",
@@ -68,7 +70,8 @@
             "com.hutchind.cordova.plugins.streamingmedia": {},
             "cordova-plugin-file": {},
             "cordova-sqlite-storage": {},
-            "cordova-plugin-media-capture": {}
+            "cordova-plugin-media-capture": {},
+            "com-badrit-base64": {}
         },
         "platforms": [
             "android"

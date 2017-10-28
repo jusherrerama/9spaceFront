@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { Base64 } from '@ionic-native/base64';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -103,7 +104,8 @@ import { VideosProvider } from '../providers/videos/videos';
     MediaCapture,
     UserProvider,
     LikesProvider,
-    CommentsProvider
+    CommentsProvider,
+    Base64
 /*,
     VideoPlayer*/
   ]
