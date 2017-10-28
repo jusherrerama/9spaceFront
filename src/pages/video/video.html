@@ -13,18 +13,20 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content padding class="action-sheets-basic-page">
+
+<ion-content padding>
   <button ion-button block (click)="openMenu()" *ngIf="profile">
     Options
   </button>
-  <ion-card  *ngIf="videos">
-          <ion-item >
-          <div class="video-container">
-      		  <video src={{videos.address.url}}  controls  >
+  <ion-item *ngIf="videos" >
+    <div class="video-container">
+      <video src={{videos.address.url}}  controls  >
 
-      		  </video>
-      		</div>
-        </ion-item >
+      </video>
+    </div>
+  </ion-item >
+  <ion-card  *ngIf="videos">
+
       		<ion-item >
             <button (click)="like()" *ngIf="like_color" ion-button clear item-start  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
             <button (click)="like()" *ngIf="!like_color" ion-button clear item-start  color ='link'  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
@@ -84,7 +86,6 @@
            </ion-list>
 
       </ion-card>
-
 
 
 </ion-content>

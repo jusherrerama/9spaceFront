@@ -15,12 +15,13 @@
 <ion-content padding>
 
 
-    <ion-item>
-      <ion-label floating color="dark">Search</ion-label>
-      <ion-searchbar type="text" #text></ion-searchbar>
-    </ion-item>
+      <ion-item>
+        <ion-label floating color="dark">Search</ion-label>
+        <ion-input type="text" #text></ion-input>
+      </ion-item>
 
       <h1> Search by:</h1>
+
 
     <ion-grid>
       <ion-row>
@@ -41,12 +42,13 @@
     <ion-list inset>
        <ion-item *ngFor="let video of videos">
           <a color="link" ion-button block clear (click)="goToVideo( video.id)">    {{video.name}}   </a>
-          <ion-card >
-            <div class="video-container">
-              <video src={{video.address.url}}  controls  >
+          <div class="video-container">
+            <video src={{video.url_address}}  controls  >
 
-        		  </video>
-             </div>
+            </video>
+           </div>
+          <ion-card >
+
              <ion-item >
                <button (click)="like()" *ngIf="like_color" ion-button clear item-start  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
                <button (click)="like()" *ngIf="!like_color" ion-button clear item-start  color ='link'  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>

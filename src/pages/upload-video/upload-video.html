@@ -49,18 +49,21 @@
       </ion-item>
       <ion-item>
           <div class="video-container" *ngIf="videoURL">
-            <video >
+            <video controls >
               <source src={{this.videoURL}} />
             </video>
           </div>
+      </ion-item>
+      <ion-item>
+        <div padding>
+          <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark" (click)="addVideo()" >Upload</button>
+        </div>
       </ion-item>
     </ion-list>
 
 
 
-    <div padding>
-      <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark" (click)="addVideo()" >Upload</button>
-    </div>
+
   </form>
 
 

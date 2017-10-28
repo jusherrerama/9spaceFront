@@ -19,12 +19,14 @@
    <ion-list inset>
        <ion-item *ngFor="let video of videos">
           <a color="link" ion-button block clear (click)="goToVideo( video.id, video.user_id)">    {{video.name}}   </a>
-          <ion-card >
             <div class="video-container">
               <video src={{video.address.url}}  controls  >
 
-        		  </video>
-             </div>
+              </video>
+            </div>
+          <ion-card >
+
+
              <ion-item >
                <button (click)="like(video.id)" *ngIf="this.likes.get(video.id)" ion-button clear item-start  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
                <button (click)="like(video.id)" *ngIf="!this.likes.get(video.id)" ion-button clear item-start  color ='link'  ><ion-icon name="thumbs-up" class = "like" ></ion-icon></button>
