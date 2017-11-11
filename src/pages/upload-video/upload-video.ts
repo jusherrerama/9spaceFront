@@ -8,6 +8,8 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions,CaptureVideoOptions } from '@ionic-native/media-capture';
 import { Base64 } from '@ionic-native/base64';
 import { VideoProvider } from '../../providers/video/video';
+
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the UploadVideoPage page.
  *
@@ -32,11 +34,15 @@ export class UploadVideoPage {
 videoURL: any;
 
 
-  constructor(private base64: Base64,public alertCtrl: AlertController,private camera: Camera,public navCtrl: NavController, public videoProvider: VideoProvider,public formBuilder: FormBuilder,private mediaCapture: MediaCapture,private streamingMedia: StreamingMedia) {
+  constructor(private storage: Storage,private base64: Base64,public alertCtrl: AlertController,private camera: Camera,public navCtrl: NavController, public videoProvider: VideoProvider,public formBuilder: FormBuilder,private mediaCapture: MediaCapture,private streamingMedia: StreamingMedia) {
     this.myForm = this.formBuilder.group({
         name: ['', Validators.required],
         category: ['', Validators.required]
       });
+
+      storage.get('user_id').then((val) => {
+            this.video.user_id = val;
+        });
 
   }
   getVideo() {
@@ -69,7 +75,8 @@ videoURL: any;
 
 }
 addVideo(){
-    this.video.user_id = 1;
+
+
     let filePath: string = this.videoURL;
     this.base64.encodeFile(filePath).then((base64File: string) => {
       this.imageB64 = base64File;
