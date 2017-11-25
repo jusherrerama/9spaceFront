@@ -45,9 +45,18 @@ export class LoginPage {
   this.userProvider.login(this.user)
       .then((result) => {
         this.responseData = result;
+
+              this.loadingCtrl.create({
+                content: 'Please wait...',
+                duration: 3000,
+                dismissOnPageChange: true
+              }).present();
+
+
         if (this.responseData.username == this.user.username ) {
 	   this.storage.set('user_id',this.responseData.id );
            //this.navCtrl.setRoot(page.component);
+
            this.navCtrl.setRoot(HomePage);
 
            console.log(this.responseData.id )

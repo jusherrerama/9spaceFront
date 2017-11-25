@@ -20,7 +20,7 @@
   </button>
   <ion-item *ngIf="videos" >
     <div class="video-container">
-      <video src={{videos.address.url}}  controls  >
+      <video  src={{videos.address.url}}  controls  >
 
       </video>
     </div>
@@ -38,7 +38,7 @@
       		<ion-item>
       		  <ion-icon name="person"></ion-icon>
       		  Shared by:
-            <button ion-button clear  (click)="goToUser( user.id)"   *ngIf="user">
+            <button ion-button clear  (click)="goToUser( user.id)"   *ngIf="user" item-right>
                <ion-badge >{{user.username}}</ion-badge></button>
 
 

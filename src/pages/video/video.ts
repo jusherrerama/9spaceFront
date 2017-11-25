@@ -119,7 +119,7 @@ export class VideoPage {
 
       buttons: [
         {
-          text: 'Delete Vidio',
+          text: 'Delete Video',
           role: 'destructive',
           handler: () => {
              this.deleteVideo();
@@ -213,7 +213,7 @@ export class VideoPage {
   this.commentsProvider.addComment(this.newComment)
         .then(data => {
           this.responseData = data;
-          console.log(this.responseData);          
+          console.log(this.responseData);
           this.myForm.reset()
           this.getVideo(this.video_id)
         });

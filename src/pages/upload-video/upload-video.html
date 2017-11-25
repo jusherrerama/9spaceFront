@@ -26,55 +26,58 @@
 
   <form [formGroup]="myForm" >
     <ion-list>
+      <!---
       <ion-item text-center>
         <ion-img width="150" height="170"  src="assets/logo1.png" ></ion-img>
       </ion-item>
+-->
       <ion-item>
-        <ion-icon name="person" item-left></ion-icon>
         <ion-label stacked>Name:</ion-label>
         <ion-input formControlName="name" type="text" placeholder="Name" [(ngModel)]="video.name"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Category</ion-label>
-        <ion-icon name="albuns" item-left></ion-icon>
         <ion-select  formControlName="category" [(ngModel)]="video.category" multiple="false" cancelText="Back" okText="Okay!">
-
             <ion-option value="fun" >Fun</ion-option>
             <ion-option value="scary">Scary</ion-option>
             <ion-option value="others" selected="true">Others</ion-option>
           </ion-select>
       </ion-item>
       <ion-item>
-        <button ion-button (click)="selectVideo()"><ion-icon name='camera'  color="light"></ion-icon></button>
+        <button ion-button (click)="selectVideo()"  item-right color="light" > <ion-icon name='camera'  color="link"></ion-icon></button>
+        <ion-label stacked>  Take your Video:</ion-label>
+
+      </ion-item>
+
+      <ion-item>
+        <button ion-button (click)="getVideo()" color="light" item-right> <ion-icon name='folder'  color="link"></ion-icon></button>
+
+        <ion-label stacked  item-left>Select your Video:</ion-label>
+
       </ion-item>
       <ion-item>
-        videos
-        <button ion-button color="secondary" (click)="getVideo()">Get video</button>
-      </ion-item>
-      <!--
-      <div class="video-container" *ngIf="videoURL">
-        <video controls >
-          <source src={{this.videoURL}} />
-        </video>
-      </div>
+          <div class="video-container"  *ngIf="videoURL">
+            <video controls  width="853" height="480"  >
+    <!-- "
+
+                  <source src="assets/video1.mp4" />
     -->
-      <ion-item>
-        <div padding>
-          <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark" (click)="addVideo()" >Upload</button>
-        </div>
-      </ion-item>
+                <source src={{this.videoURL}} />
+            </video>
+          </div>
+        </ion-item>
     </ion-list>
 
 
 
 
   </form>
-  <div class="video-container" *ngIf="videoURL">
-    <video controls >
-      <source src={{this.videoURL}} />
-    </video>
-  </div>
 
 
 
 </ion-content>
+<ion-footer>
+  <div padding>
+    <button ion-button block type="submit" [disabled]="!myForm.valid" color="dark" (click)="addVideo()" >Upload</button>
+  </div>
+</ion-footer>

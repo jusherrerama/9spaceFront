@@ -1,5 +1,5 @@
 import { Component, ViewChild  } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -8,6 +8,7 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions,CaptureVideoOptions } from '@ionic-native/media-capture';
 import { Base64 } from '@ionic-native/base64';
 import { VideoProvider } from '../../providers/video/video';
+
 
 import { Storage } from '@ionic/storage';
 /**
@@ -34,7 +35,7 @@ export class UploadVideoPage {
 videoURL: any;
 
 
-  constructor(private storage: Storage,private base64: Base64,public alertCtrl: AlertController,private camera: Camera,public navCtrl: NavController, public videoProvider: VideoProvider,public formBuilder: FormBuilder,private mediaCapture: MediaCapture,private streamingMedia: StreamingMedia) {
+  constructor(public loadingCtrl: LoadingController,private storage: Storage,private base64: Base64,public alertCtrl: AlertController,private camera: Camera,public navCtrl: NavController, public videoProvider: VideoProvider,public formBuilder: FormBuilder,private mediaCapture: MediaCapture,private streamingMedia: StreamingMedia) {
     this.myForm = this.formBuilder.group({
         name: ['', Validators.required],
         category: ['', Validators.required]
@@ -46,6 +47,8 @@ videoURL: any;
 
   }
   getVideo() {
+
+    this.videoURL = null;
     const options: CameraOptions = {
       quality: 100,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
@@ -59,7 +62,9 @@ videoURL: any;
   }
 
   public selectVideo(){
-      let options: CaptureVideoOptions = { limit: 1, duration: 10 };
+
+    this.videoURL = null;
+      let options: CaptureVideoOptions = { limit: 1, duration: 9 };
       this.videoFileName =this.mediaCapture.captureVideo(options) .then(
           (data: MediaFile[]) => {
 
@@ -82,12 +87,15 @@ addVideo(){
       this.imageB64 = base64File;
       this.imageB64 = "data:video/mp4"   + this.imageB64.substring(12,this.imageB64.length)
       this.video['address']=this.imageB64 ;
-      let alert = this.alertCtrl.create({
-        title: "respuesta",
-        subTitle: this.imageB64,
-        buttons: ['OK']
-      });
-      alert.present();
+
+
+      this.loadingCtrl.create({
+        content: 'Please wait...',
+        duration: 4000,
+        dismissOnPageChange: true
+      }).present();
+
+
       this.videoProvider.addVideo(this.video).then(data => {
       this.responseData = data;
       console.log(this.responseData);
@@ -97,6 +105,7 @@ addVideo(){
         buttons: ['OK']
       });
       alert.present();
+      this.myForm.reset()
       },
       (err: CaptureError) => console.error(err)
       );

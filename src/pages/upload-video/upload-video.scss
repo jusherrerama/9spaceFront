@@ -15,23 +15,26 @@ page-upload-video {
           opacity: inherit;
         }
       }
+      .video-container {
+          position: relative !important;
+          padding-bottom: 56.25% !important;
+          padding-top: 0px; height: 1; overflow: hidden !important;
+          width: 100% !important;
+      }
+
+      .video-container video{
+          width: 100% !important;
+
+      }
+
+
+
+
 
       }
 
     }
-    .video-container {
-        position: relative !important;
-        padding-bottom: 56.25% !important;
-        padding-top: 0px; height: 1; overflow: hidden !important;
-        width: 100% !important;
-    }
-
-    .video-container video{
-        width: 100% !important;
-
-    }
-
-    .like {
+        .like {
       font-size: 20px;
     }
 

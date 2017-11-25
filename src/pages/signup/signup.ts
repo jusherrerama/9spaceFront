@@ -43,10 +43,22 @@ export class SignupPage {
 		      this.responseData = data;
 		      console.log(this.responseData);
 		      if(this.responseData.email2 == this.user.email2 && this.responseData.email == this.user.email && this.responseData.username == this.user.username ){
-			      this.navCtrl.push(LoginPage);
+            let alert = this.alertCtrl.create({
+              title: "SignUp",
+              subTitle: "Successful",
+              buttons: ['OK']
+            });
+            alert.present();
+
+            this.navCtrl.push(LoginPage);
 		      }
 	              else {
-
+                  let alert = this.alertCtrl.create({
+                    title: "SignUp",
+                    subTitle: "An error has occurred",
+                    buttons: ['OK']
+                  });
+                  alert.present();
 		     }
 		    });
 	}
